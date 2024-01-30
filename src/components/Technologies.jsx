@@ -1,5 +1,5 @@
 // Technologies.js
-import React from 'react';
+import React, { forwardRef, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrain } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,14 +10,15 @@ const servicesData = [
 
 
 ];
+const Technologies = forwardRef((props, ref) => {
 
-const Technologies = () => {
+
     return (
-        <section className="bg-gray-100 py-16">
+        <section ref={ref} className="bg-gray-100 py-16">
             <div className="container mx-auto">
                 <h2 className="text-3xl font-bold mb-8 text-center">Technologies We Are Interested</h2>
                 <h1 className="text-xl  mb-8 text-center">We Propose Artificial Intelligence, Machine Learning To Leverage Your Business Growth. We Aim To Keep Your Company Updated With Futuristic Technologies</h1>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="flip-up">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" >
                     {servicesData.map((service, index) => (
                         <a href={service.link} target="_blank" rel="noopener noreferrer">
                             <div key={index} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
@@ -28,8 +29,8 @@ const Technologies = () => {
                                         alt="Logo"
                                     />
                                 </div>
-                                <h3 className="text-xl font-semibold mb-2 text-center">{service.title}</h3>
-                                <p className="text-gray-700 text-center">{service.description}</p>
+                                <h3 className="text-xl font-semibold mb-2 text-center" data-aos="zoom-in" >{service.title}</h3>
+                                <p className="text-gray-700 text-center" data-aos="zoom-in">{service.description}</p>
                             </div>
                         </a>
                     ))}
@@ -37,6 +38,6 @@ const Technologies = () => {
             </div>
         </section>
     );
-};
+})
 
 export default Technologies;

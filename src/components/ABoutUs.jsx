@@ -1,7 +1,10 @@
+import React, { useEffect, useRef } from "react";
 
-const AboutUsSection = () => {
+const AboutUsSection = React.forwardRef((props, ref) => {
+
+
     return (
-        <section className="relative bg-cover bg-center h-screen" style={{ backgroundImage: "url('https://i.postimg.cc/W1ZFdD4P/man-with-vr-glasses-experiencing-metaverse.jpg')" }}>
+        <section ref={ref} className="relative bg-cover bg-center h-screen" style={{ backgroundImage: "url('https://i.postimg.cc/W1ZFdD4P/man-with-vr-glasses-experiencing-metaverse.jpg')" }}>
             <div className="absolute inset-0 bg-black opacity-40"></div>
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-white text-center">
@@ -15,7 +18,7 @@ const AboutUsSection = () => {
                 </div>
             </div>
         </section>
-    );
-};
+    )
+});
 
 export default AboutUsSection;

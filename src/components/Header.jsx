@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Header = () => {
+const Header = ({ scrollToRef, introRef, missionsRef, servicesRef, industriesRef, technologiesRef, aboutUsRef, contactUsRef }) => {
     const [showMenu, setShowMenu] = useState(true);
 
     const toggleMenu = () => {
@@ -27,18 +27,19 @@ const Header = () => {
                 </button>
 
                 <div className={`flex flex-col md:flex-row mx-12 w-full ${showMenu ? 'block' : 'hidden'}`}>
-                    <button className="text-black px-4 py-2 text-sm md:text-xl">Home</button>
-                    <button className="text-black px-4 py-2 text-sm md:text-xl">Mission</button>
-                    <button className="text-black px-4 py-2 text-sm md:text-xl">Services</button>
-                    <button className="text-black px-4 py-2 text-sm md:text-xl">Industries</button>
-                    <button className="text-black px-4 py-2 text-sm md:text-xl">Technologies</button>
-                    <button className="text-black px-4 py-2 text-sm md:text-xl">About Us</button>
-                    <button className="text-black px-4 py-2 text-sm md:text-xl">Schedule Call</button>
+                    <button onClick={() => scrollToRef(introRef)} className="text-black px-4 py-2 text-sm md:text-xl">Home</button>
+                    <button onClick={() => scrollToRef(missionsRef)} className="text-black px-4 py-2 text-sm md:text-xl">Mission</button>
+                    <button onClick={() => scrollToRef(servicesRef)} className="text-black px-4 py-2 text-sm md:text-xl">Services</button>
+                    <button onClick={() => scrollToRef(industriesRef)} className="text-black px-4 py-2 text-sm md:text-xl">Industries</button>
+                    <button onClick={() => scrollToRef(technologiesRef)} className="text-black px-4 py-2 text-sm md:text-xl">Technologies</button>
+                    <button onClick={() => scrollToRef(aboutUsRef)} className="text-black px-4 py-2 text-sm md:text-xl">About Us</button>
+                    <button onClick={() => scrollToRef(contactUsRef)} className="text-black px-4 py-2 text-sm md:text-xl">Schedule Call</button>
+                    <button onClick={() => scrollToRef(contactUsRef)} className={`md:ml-auto justify-center  bg-blue-500 rounded-3xl text-white px-4 py-2 hover:border-black hover:scale-110 border transition-all ${showMenu ? 'mt-2' : ''}`}>
+                        Inquire Now
+                    </button>
                 </div>
 
-                <a href="#" className={`md:hidden bg-blue-500 rounded-3xl text-white px-4 py-2 hover:border-black hover:scale-110 border transition-all ${showMenu ? 'mt-2' : ''}`}>
-                    Inquire Now
-                </a>
+
             </div>
         </header>
     );

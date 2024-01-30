@@ -1,28 +1,48 @@
-// src/App.tsx
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { createRef } from 'react';
 import Header from './components/Header';
 import Intro from './components/Intro';
 import Missions from './components/Missions';
-import ServicesSection from './components/Services';
-import IndustriesSection from './components/Industries';
+import Services from './components/Services';
+import Industries from './components/Industries';
 import Technologies from './components/Technologies';
+import Footer from './components/Footer';
 import ContactUsSection from './components/contactus';
-import Footer from './components/footer';
 import AboutUsSection from './components/AboutUs';
 
 const App = () => {
+
+  const introRef = createRef();
+  const missionsRef = createRef();
+  const servicesRef = createRef();
+  const industriesRef = createRef();
+  const technologiesRef = createRef();
+  const aboutUsRef = createRef();
+  const contactUsRef = createRef();
+
+
+
+
+
+  const scrollToRef = (ref) => {
+    if (ref.current) {
+      window.scrollTo({
+        top: ref.current.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <div>
-      <Header />
-      <Intro />
-      <Missions />
-      <ServicesSection />
-      <IndustriesSection />
-      <Technologies />
-      <AboutUsSection />
-      <ContactUsSection />
-      <Footer />
+      <Header scrollToRef={scrollToRef} introRef={introRef} missionsRef={missionsRef} servicesRef={servicesRef} industriesRef={industriesRef} technologiesRef={technologiesRef} aboutUsRef={aboutUsRef} contactUsRef={contactUsRef} />
+      <Intro ref={introRef} scrollToRef={scrollToRef} ref2={contactUsRef} />
+      <Missions ref={missionsRef} />
+      <Services ref={servicesRef} />
+      <Industries ref={industriesRef} />
+      <Technologies ref={technologiesRef} />
+      <AboutUsSection ref={aboutUsRef} />
+      <ContactUsSection ref={contactUsRef} />
+      <Footer scrollToRef={scrollToRef} introRef={introRef} missionsRef={missionsRef} servicesRef={servicesRef} industriesRef={industriesRef} technologiesRef={technologiesRef} aboutUsRef={aboutUsRef} contactUsRef={contactUsRef} />
     </div>
   );
 };

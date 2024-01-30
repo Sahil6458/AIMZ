@@ -1,9 +1,10 @@
 // src/components/Hero.tsx
-import React from 'react';
+import React, { forwardRef, useRef } from 'react';
 
-const Intro = () => {
+const Intro = forwardRef((props, ref) => {
+
     return (
-        <section className="relative flex items-center">
+        <section ref={ref} className="relative flex w-auto items-center">
             {/* Full-width Responsive Image */}
             <img
                 className="w-full"
@@ -19,12 +20,12 @@ const Intro = () => {
                 <h5 className="text-sm md:text-3xl  my-8 mx-2 md:mx-12 lg:mx-28">
                     Building innovative solutions in Software Development and Ensuring Cybersecurity Excellence
                 </h5>
-                <button className="bg-blue-500 text-white px-10 py-4  hover:bg-blue-700 rounded-full mx-2 md:mx-12 lg:mx-28">
+                <button onClick={() => props.scrollToRef(props.ref2)} className="bg-blue-500 text-white px-10 py-4  hover:bg-blue-700 rounded-full mx-2 md:mx-12 lg:mx-28">
                     Contact Us
                 </button>
             </div>
         </section>
     );
-};
+})
 
 export default Intro;

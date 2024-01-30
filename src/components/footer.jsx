@@ -1,41 +1,70 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
-const Footer = () => {
+const Footer = forwardRef(({ scrollToRef, introRef, missionsRef, servicesRef, industriesRef, technologiesRef, aboutUsRef, contactUsRef }) => {
     return (
-        <section id="footer" className="bg-blue-500 text-white py-16 mt-0.5">
+        <section className="bg-black text-white py-16 mt-0.5">
             <div className="container mx-auto">
+
                 <div className="flex flex-wrap justify-around">
-                    <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 mb-8">
-                        <h4 className="text-lg font-bold mb-4" >Menu Links</h4>
-                        <ul >
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Our Mission</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Industries</a></li>
-                            <li><a href="#">Technologies</a></li>
+                    <div className="flex items-center flex-col mb-2 md:mb-0">
+                        <img
+                            className="h-24 md:h-24 w-auto md:w-auto "
+                            src="https://i.imgur.com/6Q5VNmv.png"
+                            alt="Logo"
+
+                        />
+                        <p>Empowering Tomorrow, Today. </p>
+                        <ul className="flex mt-4">
+                            {/* Add social media icons */}
+                            <li className="mr-4">
+                                <a onClick={() => scrollToRef()} target="_blank" rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faFacebook} size="2x" />
+                                </a>
+                            </li>
+                            <li className="mr-4">
+                                <a onClick={() => scrollToRef()} target="_blank" rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faTwitter} size="2x" />
+                                </a>
+                            </li>
+                            <li>
+                                <a onClick={() => scrollToRef()} target="_blank" rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faInstagram} size="2x" />
+                                </a>
+                            </li>
                         </ul>
                     </div>
+                    {/* <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 mb-8">
+                        <h4 className="text-lg font-bold mb-4" >Menu Links</h4>
+                        <ul >
+                            <li><a >Home</a></li>
+                            <li><a onClick={() => scrollToRef(missionsRef)}>Our Mission</a></li>
+                            <li><a onClick={() => scrollToRef(servicesRef)}>Our Services</a></li>
+                            <li><a onClick={() => scrollToRef(industriesRef)}>Industries</a></li>
+                            <li><a onClick={() => scrollToRef(technologiesRef)}>Technologies</a></li>
+                        </ul>
+                    </div> */}
 
                     <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 mb-8">
                         <h4 className="text-lg font-bold mb-4" >Our Services</h4>
                         <ul >
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">App Development</a></li>
-                            <li><a href="#">AI/ML</a></li>
-                            <li><a href="#">AR/VR</a></li>
+                            <li><a onClick={() => scrollToRef(contactUsRef)}>Cybersecurity</a></li>
+                            <li><a onClick={() => scrollToRef(contactUsRef)}>Web Design</a></li>
+                            <li><a onClick={() => scrollToRef(contactUsRef)}>Web Development</a></li>
+                            <li><a onClick={() => scrollToRef(contactUsRef)}>App Development</a></li>
+                            <li><a onClick={() => scrollToRef(contactUsRef)}>AI/ML</a></li>
+                            <li><a onClick={() => scrollToRef(contactUsRef)}>AR/VR</a></li>
                         </ul>
                     </div>
 
                     <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 mb-8">
                         <h4 className="text-lg font-bold mb-4" >Information</h4>
                         <ul >
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Schedule Call</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a onClick={() => scrollToRef(aboutUsRef)}>About Us</a></li>
+                            <li><a onClick={() => scrollToRef(contactUsRef)}>Schedule Call</a></li>
+                            <li><a onClick={() => scrollToRef()}>Privacy Policy</a></li>
+                            <li><a onClick={() => scrollToRef()}>Terms & Conditions</a></li>
                         </ul>
                     </div>
 
@@ -43,33 +72,12 @@ const Footer = () => {
                     <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 mb-8">
                         <h4 className="text-lg font-bold mb-4" >Industries</h4>
                         <ul >
-                            <li><a href="#aboutus">Gems & Jewellary</a></li>
-                            <li><a href="#scheduleCall">Perfumary</a></li>
+                            <li><a onClick={() => scrollToRef(contactUsRef)}>Gems & Jewellary</a></li>
+                            <li><a onClick={() => scrollToRef(contactUsRef)} >Perfumary</a></li>
 
                         </ul>
                     </div>
 
-                    <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 mb-8">
-                        <h4 className="text-lg font-bold mb-4">Connect With Us</h4>
-                        <ul className="flex">
-                            {/* Add social media icons */}
-                            <li className="mr-4">
-                                <a href="#" target="_blank" rel="noopener noreferrer">
-                                    <FontAwesomeIcon icon={faFacebook} size="2x" />
-                                </a>
-                            </li>
-                            <li className="mr-4">
-                                <a href="#" target="_blank" rel="noopener noreferrer">
-                                    <FontAwesomeIcon icon={faTwitter} size="2x" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank" rel="noopener noreferrer">
-                                    <FontAwesomeIcon icon={faInstagram} size="2x" />
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
 
                     <div className="w-full">
                         {/* Copyright notice */}
@@ -78,9 +86,9 @@ const Footer = () => {
 
 
                 </div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
-};
+})
 
 export default Footer;

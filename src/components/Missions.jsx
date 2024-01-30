@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { forwardRef } from 'react';
 
-const Missions = () => {
+const Missions = forwardRef((props, ref) => {
+
     return (
-        <section id="missions" className="flex items-center justify-center py-12 bg-gray-100">
+        <section ref={ref} className="flex items-center justify-center py-12 bg-gray-100">
             <div className="container mx-auto flex flex-col lg:flex-row items-center lg:items-start">
                 {/* Text on the left side */}
                 <div className="lg:w-1/2 lg:pr-10 ml-4">
@@ -28,6 +29,6 @@ const Missions = () => {
         </section>
 
     )
-}
+})
 
 export default Missions

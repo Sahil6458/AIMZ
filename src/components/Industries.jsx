@@ -1,9 +1,10 @@
 // IndustriesSection.js
-import React from 'react';
+import React, { forwardRef, useRef } from 'react';
 
-const IndustriesSection = () => {
+const Industries = forwardRef((props, ref) => {
+
     return (
-        <section className="bg-gray-200 py-16">
+        <section ref={ref} className="bg-gray-200 py-16">
             <div className="container mx-auto text-center mb-8">
                 <h2 className="text-3xl font-bold mb-2">Industries We Serve</h2>
                 <p className="text-gray-700">Provide Best Fit Industry Product For Your Business.</p>
@@ -50,6 +51,6 @@ const IndustriesSection = () => {
 
         </section >
     );
-};
+})
 
-export default IndustriesSection;
+export default Industries;

@@ -1,8 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import supabase from '../config/supaBase';
+import Popup from 'reactjs-popup';
 
-const ContactUsSection = () => {
 
+const ContactUsSection = forwardRef((props, ref) => {
     const [minDateTime, setMinDateTime] = useState('');
+    const [fields, setFields] = useState({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        subject: "",
+        message: "",
+        datetime: "",
+    });
+    const [popup, setPopup] = useState(false)
 
     useEffect(() => {
         // Get the current date and time in the format required by datetime-local input
@@ -11,13 +23,56 @@ const ContactUsSection = () => {
         // Set the minimum date and time as the current date and time
         setMinDateTime(currentDateTime);
     }, []);
+
+
+    const submit = async function (e) {
+        e.preventDefault();
+        try {
+            const { data, error } = await supabase.from('Demo').insert([fields])
+
+            // if (data) setPopup(true)
+            // if (error) console.log(error)
+
+            // return (
+            //     <div>
+            //         <Popup open={true} onClose={() => setPopup(false)}>
+            //             <h1>Thank you!</h1>
+            //             <p>Your message has been sent.</p>
+            //         </Popup>
+            //     </div>
+            // )
+
+        } catch (err) {
+            console.log(err);
+        }
+        setFields({
+            name: "",
+            email: "",
+            company: "",
+            phone: "",
+            subject: "",
+            message: "",
+            datetime: "",
+        });
+    };
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFields((prevNote) => {
+            return {
+                ...prevNote,
+                [name]: value,
+            };
+        });
+    }
+
     return (
-        <section className="bg-blue-500 py-16 text-white">
+        <section ref={ref} className="bg-blue-500 py-16 text-white">
             <div className="container mx-auto">
 
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div >
+                    <div data-aos="fade-right" >
                         <div className='mx-10'>
                             <h2 className=" text-left">
                                 <span className="text-6xl font-black  text-white block">Contact Us</span>
@@ -88,8 +143,8 @@ const ContactUsSection = () => {
 
                     </div>
 
-                    <div data-aos="fade-left">
-                        <form className='bg-white rounded-xl p-8'>
+                    <div>
+                        <form className='bg-white rounded-xl p-8' >
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="mb-4">
                                     <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Your Name</label>
@@ -101,6 +156,7 @@ const ContactUsSection = () => {
                                         className="w-full border rounded-md py-2 px-3"
                                         placeholder="John Doe"
                                         required
+                                        onChange={handleChange}
                                     />
                                 </div>
 
@@ -114,6 +170,7 @@ const ContactUsSection = () => {
                                         className="w-full border rounded-md py-2 px-3"
                                         placeholder="john@example.com"
                                         required
+                                        onChange={handleChange}
                                     />
                                 </div>
                             </div>
@@ -154,6 +211,7 @@ const ContactUsSection = () => {
                                     className="w-full border rounded-md py-2 px-3"
                                     placeholder="Briefly describe the purpose of your inquiry"
                                     required
+                                    onChange={handleChange}
                                 />
                             </div>
 
@@ -167,6 +225,7 @@ const ContactUsSection = () => {
                                     className="w-full border rounded-md py-2 px-3"
                                     placeholder="Type your message here..."
                                     required
+                                    onChange={handleChange}
                                 ></textarea>
                             </div>
                             <div className="mb-4">
@@ -179,12 +238,14 @@ const ContactUsSection = () => {
                                     className="w-full border rounded-md py-2 px-3"
                                     required
                                     min={minDateTime}
+                                    onChange={handleChange}
+
                                 />
                             </div>
 
                             <div className="flex items-center">
                                 <button
-
+                                    onClick={submit}
                                     type="submit"
                                     className="bg-white text-blue-500 px-4 py-2 rounded-md hover:bg-blue-200"
                                 >
@@ -192,11 +253,12 @@ const ContactUsSection = () => {
                                 </button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
         </section>
     );
-};
+})
 
 export default ContactUsSection;

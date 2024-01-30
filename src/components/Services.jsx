@@ -1,5 +1,5 @@
 // ServicesSection.js
-import React, { useEffect } from 'react';
+import React, { forwardRef, useEffect } from 'react';
 import 'aos/dist/aos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrain } from '@fortawesome/free-solid-svg-icons';
@@ -20,21 +20,21 @@ const servicesData = [
 ];
 
 
-const ServicesSection = () => {
+const Services = forwardRef((props, ref) => {
     useEffect(() => {
         // Initialize AOS library
         AOS.init();
     }, []);
 
     return (
-        <section className="bg-gray-100 py-16">
+        <section ref={ref} className="bg-gray-100 py-16">
             <div className="container mx-auto">
                 <h2 className="text-3xl font-bold mb-4 text-center" data-aos="fade-up">Our Services</h2>
                 <p className="text-gray-700 leading-loose mb-4 text-center" data-aos="fade-up" >Explore a range of comprehensive IT solutions designed to elevate your business. From custom software development to cybersecurity, we offer services that empower your organization and foster innovation.</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {servicesData.map((service, index) => (
-                        <div key={index} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center hover:bg-blue-200" data-aos="flip-up">
+                        <div key={index} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center hover:bg-blue-200" >
                             <div className="flex items-center">
                                 <img
                                     className="h-24 md:h-24 w-auto md:w-auto"
@@ -42,7 +42,7 @@ const ServicesSection = () => {
                                     alt="Logo"
                                 />
                             </div>
-                            <h3 className="text-xl font-semibold mb-2 text-center" data-aos="fade-up">{service.title}</h3>
+                            <h3 className="text-xl font-semibold mb-2 text-center" data-aos="fade-up" >{service.title}</h3>
                             <p className="text-gray-700 text-center" data-aos="fade-up">{service.description}</p>
                         </div>
                     ))}
@@ -50,7 +50,7 @@ const ServicesSection = () => {
             </div>
         </section>
     );
-};
+})
 
-export default ServicesSection;
+export default Services;
 
