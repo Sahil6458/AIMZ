@@ -8,6 +8,7 @@ import Technologies from './components/Technologies';
 import Footer from './components/Footer';
 import ContactUsSection from './components/contactus';
 import AboutUsSection from './components/AboutUs';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
 
@@ -34,6 +35,8 @@ const App = () => {
 
   return (
     <div>
+      <ToastContainer />
+
       <Header scrollToRef={scrollToRef} introRef={introRef} missionsRef={missionsRef} servicesRef={servicesRef} industriesRef={industriesRef} technologiesRef={technologiesRef} aboutUsRef={aboutUsRef} contactUsRef={contactUsRef} />
       <Intro ref={introRef} scrollToRef={scrollToRef} ref2={contactUsRef} />
       <Missions ref={missionsRef} />

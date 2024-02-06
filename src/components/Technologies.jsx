@@ -20,8 +20,8 @@ const Technologies = forwardRef((props, ref) => {
                 <h1 className="text-xl  mb-8 text-center">We Propose Artificial Intelligence, Machine Learning To Leverage Your Business Growth. We Aim To Keep Your Company Updated With Futuristic Technologies</h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" >
                     {servicesData.map((service, index) => (
-                        <a href={service.link} target="_blank" rel="noopener noreferrer">
-                            <div key={index} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                        <a key={index} href={service.link} target="_blank" rel="noopener noreferrer">
+                            <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
                                 <div className="flex items-center">
                                     <img
                                         className="h-24 md:h-24 w-auto md:w-auto cursor-pointer"

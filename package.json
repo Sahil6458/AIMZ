@@ -1,5 +1,5 @@
 {
-  "homepage": "https://sahil6458.github.io/AIMZ/",
+  "homepage": "https://Sahil6458.github.io/AIMZ/",
   "name": "my-project",
   "private": true,
   "version": "0.0.0",
@@ -25,6 +25,7 @@
     "react-dom": "^18.2.0",
     "react-id-swiper": "^4.0.0",
     "react-router-dom": "^6.21.3",
+    "react-toastify": "^10.0.4",
     "reactjs-popup": "^2.0.6",
     "swiper": "^11.0.5"
   },

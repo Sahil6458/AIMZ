@@ -1,18 +1,21 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import supabase from '../config/supaBase';
-import Popup from 'reactjs-popup';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 const ContactUsSection = forwardRef((props, ref) => {
     const [minDateTime, setMinDateTime] = useState('');
     const [fields, setFields] = useState({
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        subject: "",
-        message: "",
-        datetime: "",
+        // name: "",
+        // email: "",
+        // company: "",
+        // phone: "",
+        // subject: "",
+        // message: "",
+        // datetime: "",
     });
     const [popup, setPopup] = useState(false)
 
@@ -26,34 +29,46 @@ const ContactUsSection = forwardRef((props, ref) => {
 
 
     const submit = async function (e) {
+
+        console.log(Object.values(fields))
         e.preventDefault();
+
+
+
+
+
         try {
             const { data, error } = await supabase.from('Demo').insert([fields])
 
-            // if (data) setPopup(true)
-            // if (error) console.log(error)
+            toast("Form submitted successfully!", {
+                position: "top-right",
+                autoClose: 5000,
+                type: "success",
+            });
 
-            // return (
-            //     <div>
-            //         <Popup open={true} onClose={() => setPopup(false)}>
-            //             <h1>Thank you!</h1>
-            //             <p>Your message has been sent.</p>
-            //         </Popup>
-            //     </div>
-            // )
+            console.log(data, error)
+            // if (data) toast("Form submitted successfully!", {
+            //     position: "top-right",
+            //     autoClose: 5000,
+            //     type: "success",
+            // });
+            // if (error) toast("Form submittion failed!", {
+            //     position: "top-right",
+            //     autoClose: 5000,
+            //     type: "error",
+            // });
+
 
         } catch (err) {
             console.log(err);
+            toast("Form submittion failed!", {
+                position: "top-right",
+                autoClose: 5000,
+                type: "error",
+            });
         }
-        setFields({
-            name: "",
-            email: "",
-            company: "",
-            phone: "",
-            subject: "",
-            message: "",
-            datetime: "",
-        });
+        e.target.reset();
+        setFields({});
     };
 
     const handleChange = (event) => {
@@ -144,7 +159,7 @@ const ContactUsSection = forwardRef((props, ref) => {
                     </div>
 
                     <div>
-                        <form className='bg-white rounded-xl p-8' >
+                        <form className='bg-white rounded-xl p-8' onSubmit={submit}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="mb-4">
                                     <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Your Name</label>
@@ -185,6 +200,9 @@ const ContactUsSection = forwardRef((props, ref) => {
                                         name="company"
                                         className="w-full border rounded-md py-2 px-3"
                                         placeholder="Your Company Name"
+                                        required
+                                        onChange={handleChange}
+
                                     />
                                 </div>
 
@@ -197,6 +215,9 @@ const ContactUsSection = forwardRef((props, ref) => {
                                         name="phone"
                                         className="w-full border rounded-md py-2 px-3"
                                         placeholder="+1(123)-456-7890"
+                                        required
+                                        onChange={handleChange}
+
                                     />
                                 </div>
                             </div>
@@ -245,7 +266,7 @@ const ContactUsSection = forwardRef((props, ref) => {
 
                             <div className="flex items-center">
                                 <button
-                                    onClick={submit}
+                                    // onClick={submit}
                                     type="submit"
                                     className="bg-white text-blue-500 px-4 py-2 rounded-md hover:bg-blue-200"
                                 >
