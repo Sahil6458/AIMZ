@@ -1,3 +1,5 @@
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
 const Header = ({ scrollToRef, introRef, missionsRef, servicesRef, industriesRef, technologiesRef, aboutUsRef, contactUsRef }) => {
@@ -12,19 +14,25 @@ const Header = ({ scrollToRef, introRef, missionsRef, servicesRef, industriesRef
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
                 <div className="flex items-center mb-2 md:mb-0">
                     <img
-                        className="h-24 md:h-24 w-auto md:w-auto"
+                        className="h-24 md:h-24 w-auto md:w-auto mx-6"
                         src="https://i.postimg.cc/vZJ6cFwG/logo-removebg.png"
                         alt="Logo"
                     />
                 </div>
 
                 {/* Menu Button for smaller screens */}
-                <button
+                {/* <button
                     className="md:hidden bg-white text-black px-4 py-2 rounded"
                     onClick={toggleMenu}
                 >
+                   
                     {showMenu ? 'Hide Menu' : 'Show Menu'}
-                </button>
+                </button> */}
+                {/* <FontAwesomeIcon icon="fa-solid fa-bars" /> */}
+                <div className="md:hidden bg-white text-black px-4 py-2 rounded"
+                    onClick={toggleMenu} >
+                    <FontAwesomeIcon icon={faBars} />
+                </div>
 
                 <div className={`flex flex-col md:flex-row mx-12 w-full ${showMenu ? 'block' : 'hidden'}`}>
                     <button onClick={() => scrollToRef(introRef)} className="text-black px-4 py-2 text-sm md:text-xl">Home</button>
